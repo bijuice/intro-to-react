@@ -37,8 +37,8 @@ export default function Home() {
       onClick={handleClick}>Press Me</button>
 
       {/* Data can be passed to components like so */}
-      <HelloWorld name="name" />
-      <HelloWorld name="name" />
+      <HelloWorld name="Abdul" />
+      <HelloWorld name="Bob" />
     </>
   )
 }
