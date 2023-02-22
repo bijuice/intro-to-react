@@ -1,3 +1,5 @@
+import Link from "next/link"
+
 export default function Card({ profileName, content, imageUrl }) {
   return (
     <div className=" rounded-lg shadow-md px-5 py-5 w-[500px]  border-[1px] border-gray-200">
@@ -6,7 +8,9 @@ export default function Card({ profileName, content, imageUrl }) {
           <img src={imageUrl} className="object-contain" />
         </div>
         <div className="flex flex-col gap-2 h-full ">
-          <h1 className="text-3xl text-slate-600 font-bold">{profileName}</h1>
+          <h1 className="text-3xl text-slate-600 font-bold">
+            <Link href={`/${profileName}`}>{profileName}</Link>
+          </h1>
         </div>
       </div>
 

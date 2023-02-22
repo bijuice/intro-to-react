@@ -18,11 +18,15 @@ const posts = [
 ]
 
 export default function handler(req, res) {
-  const name = req.query.name
+  const { name } = req.query
+
+  console.log(name)
 
   const post = posts.find((post) => {
-    post.profileName = name
+    return post.profileName === name
   })
+
+  console.log(post)
 
   if (post) {
     res.status(200).json(post)
