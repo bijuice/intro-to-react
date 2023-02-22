@@ -6,17 +6,17 @@ import Link from "next/link"
 import { useEffect, useState } from "react"
 
 export default function Home() {
-  // const [posts, setPosts] = useState([])
+  const [posts, setPosts] = useState([])
 
   const [post, setPost] = useState({})
 
   useEffect(() => {
     axios
-      .get("/api/Abdul")
+      .get("/api/get-all-posts")
       .then((res) => {
         const data = res.data
 
-        setPost(data)
+        setPosts(data)
       })
       .catch((e) => console.log(e))
   }, [])
@@ -29,7 +29,7 @@ export default function Home() {
         <Link href="/about">About Banter</Link>
       </h1>
       <main className="min-h-screen mt-10 flex flex-col items-center gap-5">
-        {/* {posts.map((post) => {
+        {posts.map((post) => {
           return (
             <Card
               profileName={post.profileName}
@@ -37,13 +37,13 @@ export default function Home() {
               imageUrl={post.imageUrl}
             />
           )
-        })} */}
+        })}
 
-        <Card
+        {/* <Card
           profileName={post.profileName}
           content={post.content}
           imageUrl={post.imageUrl}
-        />
+        /> */}
       </main>
       <Footer />
     </>
