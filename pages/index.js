@@ -1,63 +1,36 @@
-import Card from "@/components/Card";
-import Footer from "@/components/Footer";
-import Navbar from "@/components/Navbar";
-import axios from "axios";
-import { useEffect, useState } from "react";
+import Card from "@/components/Card"
+import Footer from "@/components/Footer"
+import Navbar from "@/components/Navbar"
+import axios from "axios"
+import { useEffect, useState } from "react"
 
 export default function Home() {
-
-  const [name, setName] = useState("")
-
-  const [counter, setCounter] = useState(0)
-
-  const [isAuthenticated, setIsAuthenticated] = useState(false)
-
-  function toggleAuthenticated () {
-
-        setIsAuthenticated(!isAuthenticated)
-    }
-
-
-  async function fetchName () {
-
-    await axios.get('/api/hello').then(res => {
-      const data = res.data
-      console.log(data);
-      setName(data.name)
-
-    }).catch(err => {
-      console.log(err)
-    })
-  }
+  const [posts, setPosts] = useState([])
 
   useEffect(() => {
-      fetchName()
+    axios.get("/api/get-all-posts").then((res) => {
+      const data = res.data
+
+      setPosts(data)
+    })
   }, [])
 
   return (
     <>
       <Navbar />
 
-
-      <button onClick={() => {
-        setCounter(counter + 1)
-      }}>Increment</button>
-
-      <button onClick={toggleAuthenticated}>
-        {
-            isAuthenticated === true ? "Sign Out" : "Sign In"
-        }
-      </button>
-
-      <div className="h-[100vh] flex flex-col gap-10 justify-center items-center pt-20">
-        <Card imageUrl="/cat.jpg" profileName={name} content="I really love KamiLimu although some people say it's a cult :/" />
-        <Card imageUrl="/cat.jpg" profileName={name} content="I really love KamiLimu although some people say it's a cult :/" />
-        <Card imageUrl="/cat.jpg" profileName={name} content="I really love KamiLimu although some people say it's a cult :/" />
-        <Card imageUrl="/cat.jpg" profileName={name} content="I really love KamiLimu although some people say it's a cult :/" />
-      </div>
+      <main className="min-h-screen mt-10 flex flex-col items-center gap-5">
+        {posts.map((post) => {
+          return (
+            <Card
+              profileName={post.profileName}
+              content={post.content}
+              imageUrl={post.imageUrl}
+            />
+          )
+        })}
+      </main>
       <Footer />
     </>
   )
 }
-
-
