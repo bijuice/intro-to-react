@@ -9,7 +9,13 @@ export default function Home() {
     <>
       <Navbar />
 
-      <main className="min-h-screen"> </main>
+      <main className="min-h-screen pt-16 flex flex-col items-center">
+        <Card
+          imageUrl="/cat.jpg"
+          profileName="Abdul"
+          content="I really love KamiLimu although some people say it's a cult :/"
+        />
+      </main>
       <Footer />
     </>
   )
