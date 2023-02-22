@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 
 export default function Home() {
   /*
-  Some of the actions we take in JavaScript take time to complete. For example, fetching data from a server.
+  Some of the actions we make in JavaScript take time to complete. For example, fetching data from a server.
   It would be unwise to freeze the whole application to wait for the result of this process as it would make
   the app stop working every time some data is being fetched.
 
@@ -53,7 +53,7 @@ export default function Home() {
           //during development we can log all sorts of things to see if we're getting the expected result
           console.log(res.data)
 
-          //here we finally use the name property we get from the data from the response. 
+          //here we finally use the name property we get from the data from the response.
           //we set the state 'name' using the setName() function
           setName(data.name)
         }
