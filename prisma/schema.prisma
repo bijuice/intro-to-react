@@ -13,3 +13,8 @@ model posts {
   imageUrl    String
   profileName String
 }
+
+model users {
+  id          String @id @map("_id")
+  image       String?
+}
