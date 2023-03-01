@@ -30,7 +30,6 @@ export default function Home() {
   }
 
   useEffect(() => {
-    console.log("useEffect is running here")
     getAllTransactions()
   }, [])
 
