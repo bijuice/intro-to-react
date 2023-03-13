@@ -1,4 +1,4 @@
-#How to get this running
+# How to get this running
 
 1. Clone repo
 3. Run `npm install` in a terminal/cmd within the project directory
