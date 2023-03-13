@@ -3,7 +3,7 @@
 1. Clone repo
 3. Run `npm install` in a terminal/cmd within the project directory
 
-#Introduction
+# Introduction
 
 This is an Intro To React And Next JS course.
 
