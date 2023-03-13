@@ -1,4 +1,5 @@
 import Card from "@/components/Card"
+import CreatePost from "@/components/CreatPost"
 import Footer from "@/components/Footer"
 import Navbar from "@/components/Navbar"
 import Spinner from "@/components/Spinner"
@@ -30,16 +31,16 @@ export default function Home() {
   }
 
   useEffect(() => {
-    console.log("useEffect is running here")
     getAllTransactions()
   }, [])
 
   return (
     <>
       <Navbar />
+      <p className="text-red-500">{error}</p>
 
       <main className="min-h-screen pt-16 flex flex-col gap-5 items-center">
-        <p className="text-red-500">{error}</p>
+        <CreatePost />
 
         {isLoading ? <Spinner /> : null}
         {posts.map((post) => {

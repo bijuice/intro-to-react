@@ -1,9 +1,7 @@
 import { PrismaClient } from "@prisma/client"
 import NextAuth from "next-auth"
 import GithubProvider from "next-auth/providers/github"
-import GoogleProvider from "next-auth/providers/google"
-
-const prisma = new PrismaClient()
+import prismaInstance from "@/utilities/prismaInstance"
 
 export const authOptions = {
   // Configure one or more authentication providers
@@ -16,7 +14,7 @@ export const authOptions = {
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
-        const userExists = await prisma.user
+        const userExists = await prismaInstance.user
           .findUnique({
             where: {
               id: user.id,
@@ -29,7 +27,7 @@ export const authOptions = {
         console.log("exisiting user: ", userExists)
 
         if (!userExists) {
-          const newUser = await prisma.user
+          const newUser = await prismaInstance.user
             .create({
               data: {
                 id: user.id,

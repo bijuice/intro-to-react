@@ -2,7 +2,7 @@ import Link from "next/link"
 
 export default function Card({ profileName, content, imageUrl }) {
   return (
-    <div className=" rounded-lg shadow-md px-5 py-5 w-[500px]  border-[1px] border-gray-200 transform hover:scale-[101%] hover:-translate-y-1 duration-100">
+    <div className=" rounded-lg shadow-md px-5 py-5 w-[500px]  border-[1px] border-gray-200 ">
       <div className="flex gap-5 items-center">
         <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-gray-300">
           <img src={imageUrl} className="object-contain" />
