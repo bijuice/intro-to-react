@@ -16,7 +16,7 @@ export const authOptions = {
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
-        const userExists = await prisma.users
+        const userExists = await prisma.user
           .findUnique({
             where: {
               id: user.id,
@@ -28,20 +28,20 @@ export const authOptions = {
 
         console.log("exisiting user: ", userExists)
 
-        // if (!userExists) {
-        //   const newUser = await prisma.users
-        //     .create({
-        //       data: {
-        //         id: user.id,
-        //         image: user.image,
-        //       },
-        //     })
-        //     .catch((e) => {
-        //       console.log(e.message)
-        //     })
+        if (!userExists) {
+          const newUser = await prisma.user
+            .create({
+              data: {
+                id: user.id,
+                image: user.image,
+              },
+            })
+            .catch((e) => {
+              console.log(e.message)
+            })
 
-        //   console.log("new user: ", newUser)
-        // }
+          console.log("new user: ", newUser)
+        }
       }
 
       return token
