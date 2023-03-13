@@ -1,5 +1,6 @@
 import Footer from "@/components/Footer"
 import Navbar from "@/components/Navbar"
+import { useSession } from "next-auth/react"
 
 export default function About() {
   return (

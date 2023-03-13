@@ -9,7 +9,12 @@ datasource db {
 
 model posts {
   id          String @id @default(auto()) @map("_id") @db.ObjectId
-  content     String
+  content     String 
   imageUrl    String
   profileName String
+}
+
+model User {
+  id          String @id @map("_id")
+  image       String?
 }
