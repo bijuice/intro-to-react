@@ -1,7 +1,7 @@
 import axios from "axios"
 import { useState } from "react"
 
-export default function CreatePost() {
+export default function CreatePost({ posts, setPosts }) {
   const [content, setContent] = useState("")
   const [message, setMessage] = useState("")
   const [isSubmit, setIsSubmit] = useState(false)
@@ -19,6 +19,10 @@ export default function CreatePost() {
       })
       .then((res) => {
         setMessage(res.data.message)
+
+        const newPost = res.data.response
+
+        setPosts([...posts, newPost])
       })
       .catch((err) => {
         setMessage(err.message)

@@ -40,7 +40,7 @@ export default function Home() {
       <p className="text-red-500">{error}</p>
 
       <main className="min-h-screen pt-16 flex flex-col gap-5 items-center">
-        <CreatePost />
+        <CreatePost posts={posts} setPosts={setPosts} />
 
         {isLoading ? <Spinner /> : null}
         {posts.map((post) => {
