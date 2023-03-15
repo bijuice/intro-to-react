@@ -1,6 +1,5 @@
 import axios from "axios"
 import { useState } from "react"
-import Spinner from "./Spinner"
 
 export default function CreatePost() {
   const [content, setContent] = useState("")
@@ -56,7 +55,7 @@ export default function CreatePost() {
         disabled={isSubmit}
         onClick={submitPost}
       >
-        {isSubmit ? <Spinner /> : "Post"}
+        {isSubmit ? "Loading..." : "Post"}
       </button>
     </form>
   )

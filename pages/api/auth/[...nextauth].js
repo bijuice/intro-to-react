@@ -24,8 +24,6 @@ export const authOptions = {
             console.log(e.message)
           })
 
-        console.log("exisiting user: ", userExists)
-
         if (!userExists) {
           const newUser = await prismaInstance.user
             .create({
@@ -37,12 +35,16 @@ export const authOptions = {
             .catch((e) => {
               console.log(e.message)
             })
-
-          console.log("new user: ", newUser)
         }
+        token.id = user.id
       }
 
       return token
+    },
+    async session({ session, token }) {
+      session.user.id = token.id
+
+      return session
     },
   },
 }

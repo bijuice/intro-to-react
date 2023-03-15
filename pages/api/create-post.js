@@ -11,15 +11,25 @@ export default async function handler(req, res) {
 
   const post = req.body
 
-  console.log(post)
+  const { user } = await getServerSession(req, res, authOptions)
 
-  const session = await getServerSession(req, res, authOptions)
+  if (!user) {
+    res.status(401).json({ message: "You must be signed in to post" })
+  }
 
-  console.log(session)
+  try {
+    const response = await prismaInstance.post.create({
+      data: {
+        content: post.content,
+        imageUrl: user.image,
+        userId: user.id,
+      },
+    })
 
-  //   prismaInstance.posts.create({
-  //     data: {},
-  //   })
-
-  res.status(200).json("ok")
+    res
+      .status(200)
+      .json({ message: "Successfully created post", response: response })
+  } catch (err) {
+    res.status(500).json({ message: "Failed to create post. " })
+  }
 }
