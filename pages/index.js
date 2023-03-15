@@ -1,4 +1,5 @@
 import Card from "@/components/Card"
+import CreatePostForm from "@/components/CreatePostForm"
 import Footer from "@/components/Footer"
 import Navbar from "@/components/Navbar"
 import Spinner from "@/components/Spinner"
@@ -14,7 +15,7 @@ export default function Home() {
 
   async function getAllTransactions() {
     await axios
-      .get("/api/get-all-transactions")
+      .get("/api/get-all-posts")
       .then((res) => {
         const data = res.data
 
@@ -40,6 +41,8 @@ export default function Home() {
 
       <main className="min-h-screen pt-16 flex flex-col gap-5 items-center">
         <p className="text-red-500">{error}</p>
+
+        <CreatePostForm posts={posts} setPosts={setPosts} />
 
         {isLoading ? <Spinner /> : null}
         {posts.map((post) => {

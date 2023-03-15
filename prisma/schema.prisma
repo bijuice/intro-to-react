@@ -17,4 +17,13 @@ model posts {
 model User {
   id          String @id @map("_id")
   image       String?
+  posts       Post[]
+}
+
+model Post {
+  id          String @id @default(auto()) @map("_id") @db.ObjectId
+  content     String 
+  imageUrl    String
+  user        User   @relation(fields: [userId], references: [id])
+  userId      String
 }

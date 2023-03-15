@@ -5,9 +5,6 @@ import { signIn, signOut, useSession } from "next-auth/react"
 export default function Navbar() {
   const { data: session, status } = useSession()
 
-  console.log("session: ", session)
-  console.log("status: ", status)
-
   return (
     <nav className="flex justify-between px-10 py-7 bg-slate-300">
       <h1 className="text-purple-500 text-2xl font-bold">Banter</h1>
