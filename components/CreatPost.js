@@ -40,7 +40,7 @@ export default function CreatePost({ posts, setPosts }) {
       }}
     >
       <h1 className="text-xl font-semibold text-gray-500">
-        What's on your mind?
+        What{"'"}s on your mind?
       </h1>
 
       <textarea
